@@ -12,8 +12,7 @@
 </head>
 <body class="h-100">
 <div id="app" class="flex-center position-ref h-100">
-    <nav-bar></nav-bar>
-    <router-view></router-view>
+    <root-component></root-component>
 </div>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
