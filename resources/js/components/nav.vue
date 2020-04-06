@@ -1,8 +1,8 @@
 <template>
     <div class="pos-f-t h-10">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark h-100">
-            <a class="navbar-brand" href="#">
-                <img src="/img/logo.png" width="30" height="30" alt="">
+            <a class="navbar-brand " href="#">
+                PeeBu
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
