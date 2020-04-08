@@ -4,6 +4,17 @@
             <div class="col-md-12 p-4 w-100">
                 <h2>Classifique as suas transações</h2>
             </div>
+            <div class="col-md-4 p-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Transações classificadas</span>
+                    <span class="badge badge-secondary bg-dark badge-pill">0</span>
+                </h4>
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Transações por classificar</span>
+                    <span class="badge badge-secondary bg-dark badge-pill">0</span>
+                </h4>
+
+            </div>
             <div class="col-md-12 w-100 h-100">
                 <table class="table">
                     <thead class="thead-dark">
