@@ -22,6 +22,10 @@ export default new Vuex.Store({
                 .then(transactions => transactions.data)
                 .then(transactions => {
                     state.transactions = transactions;
+                    for(var i =0; i< state.transactions.length; i++){
+                        state.transactions[i].classificated = false;
+                        state.transactions[i].categorie = "";
+                    }
                 })
         }
     },
