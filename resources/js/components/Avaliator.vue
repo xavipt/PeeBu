@@ -62,8 +62,6 @@
         data: function(){
             return {
                 classifiedTransactions: 0,
-                notclassifiedTransactions: 100,
-                clicked: false,
                 buttons:[
                     {
                         categorie:'cabeleireiro',
@@ -118,6 +116,9 @@
         computed:{
             transactions(){
                 return this.$store.getters.transactions
+            },
+            notclassifiedTransactions(){
+                return this.$store.getters.transactions.length
             },
         },
         methods: {
