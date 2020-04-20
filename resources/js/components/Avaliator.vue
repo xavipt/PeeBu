@@ -1,6 +1,10 @@
 <template>
     <div class="container h-90 w-100">
         <div class="row h-100 w-100">
+            <div class="stickyBottom p-4">
+                <button v-on:click="topFunction" type="button" class="btn btn-dark btn-circle btn-lg"><i class="fas fa-arrow-up text-white"></i></button>
+            </div>
+
             <div class="col-md-12 p-4 w-100">
                 <h2>Classifique as suas transações</h2>
             </div>
@@ -13,7 +17,6 @@
                     <span class="text-muted">Transações por classificar</span>
                     <span class="badge badge-secondary bg-dark badge-pill">{{notclassifiedTransactions}}</span>
                 </h4>
-
             </div>
             <div class="col-md-12 w-100 h-100">
                 <table class="table">
@@ -52,6 +55,9 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="col-md-12 w-100 p-4">
+                    <button type="button" class="btn btn-dark">Validar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -138,6 +144,10 @@
                     this.notclassifiedTransactions --;
                 }
 
+            },
+            topFunction: function () {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
             }
         }
     }
