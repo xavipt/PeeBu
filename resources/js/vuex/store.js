@@ -9,10 +9,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
         transactions:[],
+        notclassifiedTransactions:'',
     },
     getters:{
         transactions: state =>{
             return state.transactions;
+        },
+        notclassifiedTransactions: state =>{
+            return state.notclassifiedTransactions;
         }
     },
     mutations:{
@@ -26,6 +30,7 @@ export default new Vuex.Store({
                         state.transactions[i].classificated = false;
                         state.transactions[i].categorie = "";
                     }
+                    state.notclassifiedTransactions = transactions.length;
                 })
         }
     },

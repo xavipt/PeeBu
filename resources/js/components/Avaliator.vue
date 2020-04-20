@@ -55,8 +55,8 @@
                     </tr>
                     </tbody>
                 </table>
-                <div class="col-md-12 w-100 p-4">
-                    <button type="button" class="btn btn-dark">Validar</button>
+                <div class="col-md-12 w-100 pb-4">
+                    <button v-on:click="validate" type="button" class="btn btn-dark btn-lg">Validar</button>
                 </div>
             </div>
         </div>
@@ -68,6 +68,7 @@
         data: function(){
             return {
                 classifiedTransactions: 0,
+                notclassifiedTransactions: 0,
                 buttons:[
                     {
                         categorie:'cabeleireiro',
@@ -123,9 +124,6 @@
             transactions(){
                 return this.$store.getters.transactions
             },
-            notclassifiedTransactions(){
-                return this.$store.getters.transactions.length
-            },
         },
         methods: {
             classificate: function (transaction,categorie,indexI,indexJ) {
@@ -141,13 +139,18 @@
                     Vue.set(this.transactions[transaction.id -1], 'classified', true)
                     Vue.set(this.transactions[transaction.id -1], 'categorie', categorie)
                     this.classifiedTransactions ++;
-                    this.notclassifiedTransactions --;
+                    this.notclassifiedTransactions = this.transactions.length - this.classifiedTransactions;
                 }
 
             },
             topFunction: function () {
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
+            },
+            validate: function(){
+                for (var i =0; i < this.transactions.length; i++ ){
+                    console.log(this.transactions[i])
+                }
             }
         }
     }
