@@ -15,7 +15,7 @@ export default new Vuex.Store({
         transactions: state =>{
             return state.transactions;
         },
-        notclassifiedTransactions: state =>{
+        c: state =>{
             return state.notclassifiedTransactions;
         }
     },
@@ -27,7 +27,7 @@ export default new Vuex.Store({
                 .then(transactions => {
                     state.transactions = transactions;
                     for(var i =0; i< state.transactions.length; i++){
-                        state.transactions[i].classificated = false;
+                        state.transactions[i].classified = false;
                         state.transactions[i].categorie = "";
                     }
                     state.notclassifiedTransactions = transactions.length;

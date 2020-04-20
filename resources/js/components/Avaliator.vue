@@ -146,10 +146,28 @@
             topFunction: function () {
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
+                for (var i =0; i < this.transactions.length; i++ ){
+                    Vue.set(this.transactions[i], 'categorie', "casa")
+                    Vue.set(this.transactions[i], 'classified', true)
+                }
+
             },
             validate: function(){
+                var aux = true;
                 for (var i =0; i < this.transactions.length; i++ ){
-                    console.log(this.transactions[i])
+                    if(!this.transactions[i].classified){
+                        aux = false;
+                    }
+                }
+                if(aux){
+                    //this.$store.push({name:''})
+                }else{
+                    this.$notify({
+                        group: 'error',
+                        title: 'Error',
+                        text: 'Faltam Classificar '+ this.notclassifiedTransactions + ' transacções',
+                        type: 'error',
+                    });
                 }
             }
         }
