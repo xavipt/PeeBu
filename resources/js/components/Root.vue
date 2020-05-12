@@ -1,5 +1,8 @@
 <template>
     <div class="h-100 w-100">
+        <notifications group="error"
+                       position="top center"
+                       />
         <nav-bar></nav-bar>
         <router-view></router-view>
     </div>

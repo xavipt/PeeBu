@@ -1,6 +1,10 @@
 <template>
     <div class="container h-90 w-100">
         <div class="row h-100 w-100">
+            <div class="stickyBottom p-4">
+                <button v-on:click="topFunction" type="button" class="btn btn-dark btn-circle btn-lg"><i class="fas fa-arrow-up text-white"></i></button>
+            </div>
+
             <div class="col-md-12 p-4 w-100">
                 <h2>Classifique as suas transações</h2>
             </div>
@@ -13,7 +17,6 @@
                     <span class="text-muted">Transações por classificar</span>
                     <span class="badge badge-secondary bg-dark badge-pill">{{notclassifiedTransactions}}</span>
                 </h4>
-
             </div>
             <div class="col-md-12 w-100 h-100">
                 <table class="table">
@@ -52,6 +55,9 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="col-md-12 w-100 pb-4">
+                    <button v-on:click="validate" type="button" class="btn btn-dark btn-lg">Validar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -62,6 +68,7 @@
         data: function(){
             return {
                 classifiedTransactions: 0,
+                notclassifiedTransactions: 0,
                 buttons:[
                     {
                         categorie:'cabeleireiro',
@@ -117,9 +124,6 @@
             transactions(){
                 return this.$store.getters.transactions
             },
-            notclassifiedTransactions(){
-                return this.$store.getters.transactions.length
-            },
         },
         methods: {
             classificate: function (transaction,categorie,indexI,indexJ) {
@@ -135,9 +139,36 @@
                     Vue.set(this.transactions[transaction.id -1], 'classified', true)
                     Vue.set(this.transactions[transaction.id -1], 'categorie', categorie)
                     this.classifiedTransactions ++;
-                    this.notclassifiedTransactions --;
+                    this.notclassifiedTransactions = this.transactions.length - this.classifiedTransactions;
                 }
 
+            },
+            topFunction: function () {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                for (var i =0; i < this.transactions.length; i++ ){
+                    Vue.set(this.transactions[i], 'categorie', "casa")
+                    Vue.set(this.transactions[i], 'classified', true)
+                }
+
+            },
+            validate: function(){
+                var aux = true;
+                for (var i =0; i < this.transactions.length; i++ ){
+                    if(!this.transactions[i].classified){
+                        aux = false;
+                    }
+                }
+                if(aux){
+                    //this.$store.push({name:''})
+                }else{
+                    this.$notify({
+                        group: 'error',
+                        title: 'Error',
+                        text: 'Faltam Classificar '+ this.notclassifiedTransactions + ' transacções',
+                        type: 'error',
+                    });
+                }
             }
         }
     }

@@ -93,6 +93,44 @@
   height: 40px !important;
 }
 
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+
+.btn-circle.btn-lg,
+.btn-group-lg > .btn-circle.btn {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+.fixed-bottom {
+  position: fixed !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 0 !important;
+}
+
+.stickyBottom {
+  position: fixed !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 0 !important;
+}
+
+.nopadding {
+  padding: 0 !important;
+}
+
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
