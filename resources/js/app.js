@@ -6,6 +6,7 @@ import router from './router';
 import Root from './components/Root';
 
 
+
 window.Vue = require('vue');
 Vue.use(VueRouter);
 
