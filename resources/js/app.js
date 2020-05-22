@@ -8,6 +8,7 @@ import Notifications from 'vue-notification';
 import Vuetify from 'vuetify'
 
 
+
 window.Vue = require('vue');
 Vue.use(VueRouter);
 Vue.use(Notifications);
