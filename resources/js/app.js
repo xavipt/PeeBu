@@ -19,6 +19,7 @@ Vue.component('nav-bar', require('./components/nav').default)
 Vue.component('root-component', Root)
 
 
+
 const app = new Vue({
     store,
     router,
