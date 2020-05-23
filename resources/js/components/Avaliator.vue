@@ -107,6 +107,7 @@
                         categorie:'outro',
                         icon: 'fas fa-plus fa-lg p-1'
                     },
+                    
                 ]
             }
         },
