@@ -9,14 +9,14 @@
 </template>
 
 <script>
-    export default {
-        computed:{
-            transactions(){
-                return this.$store.getters.transactions
-            }
-        },
-        beforeCreate() {
-            this.$store.dispatch('loadTransactions');
-        },
-    }
+export default {
+    computed:{
+        transactions(){
+            return this.$store.getters.transactions
+        }
+    },
+    beforeCreate() {
+        this.$store.dispatch('loadTransactions');
+    },
+}
 </script>
