@@ -6,10 +6,7 @@ import router from './router';
 import Root from './components/Root';
 import Notifications from 'vue-notification';
 import Vuetify from 'vuetify'
-<<<<<<< HEAD
-=======
 
->>>>>>> 97cf0a732ec8835481946ba00d9ab86a8de9dac6
 
 
 window.Vue = require('vue');
@@ -28,8 +25,5 @@ const app = new Vue({
     router,
     el: '#app',
     vuetify: new Vuetify(),
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 97cf0a732ec8835481946ba00d9ab86a8de9dac6
+
