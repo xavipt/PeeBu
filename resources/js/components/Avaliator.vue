@@ -120,6 +120,8 @@
                     { text: 'Data', value: 'createdAt' },
                     { text: 'Acções', value: 'acoes' },
                 ],
+                countsOfCategories:[0,0,0,0,0,0,0,0,0,0,0],
+                top5:[],
             }
         },
         mounted() {
@@ -127,14 +129,12 @@
         },
         computed:{
             transactions(){
-
                 return this.$store.getters.transactions
             },
-
         },
         methods: {
             classificate: function (transaction,categorie,indexI,indexJ) {
-                    console.log(transaction)
+                    console.log(categorie)
                 if(this.transactions[transaction.id -1].classified){
                     Vue.set(this.transactions[transaction.id -1], 'i', indexI)
                     Vue.set(this.transactions[transaction.id -1], 'j', indexJ)
@@ -147,6 +147,40 @@
                     Vue.set(this.transactions[transaction.id -1], 'categorie', categorie)
                     this.classifiedTransactions ++;
                     this.notclassifiedTransactions = this.transactions.length - this.classifiedTransactions;
+
+                    if(categorie.localeCompare("cabeleireiro") === 0){
+                        this.countsOfCategories[0] ++;
+                    }
+                    if(categorie.localeCompare("restauracao") === 0){
+                        this.countsOfCategories[1] ++;
+                    }
+                    if(categorie.localeCompare("saude") === 0){
+                        this.countsOfCategories[2] ++;
+                    }
+                    if(categorie.localeCompare("entretenimento") === 0){
+                        this.countsOfCategories[3] ++;
+                    }
+                    if(categorie.localeCompare("escola") === 0){
+                        this.countsOfCategories[4] ++;
+                    }
+                    if(categorie.localeCompare("casa") === 0){
+                        this.countsOfCategories[5] ++;
+                    }
+                    if(categorie.localeCompare("animais") === 0){
+                        this.countsOfCategories[6] ++;
+                    }
+                    if(categorie.localeCompare("mecanica") === 0){
+                        this.countsOfCategories[7] ++;
+                    }
+                    if(categorie.localeCompare("supermercado") === 0){
+                        this.countsOfCategories[8] ++;
+                    }
+                    if(categorie.localeCompare("roupas") === 0){
+                        this.countsOfCategories[9] ++;
+                    }
+                    if(categorie.localeCompare("outro") === 0){
+                        this.countsOfCategories[10] ++;
+                    }
                 }
 
             },
@@ -178,7 +212,22 @@
                     });
                 }
                  */
-                this.$store.push({name:''})
+                this.top5[0] = ["cabeleireiro",this.countsOfCategories[0]];
+                this.top5[1] = ["restauracao",this.countsOfCategories[1]];
+                this.top5[2] = ["saude",this.countsOfCategories[2]];
+                this.top5[3] = ["entretenimento",this.countsOfCategories[3]];
+                this.top5[4] = ["escola",this.countsOfCategories[4]];
+                this.top5[5] = ["casa",this.countsOfCategories[5]];
+                this.top5[6] = ["animais",this.countsOfCategories[6]];
+                this.top5[7] = ["mecanica",this.countsOfCategories[7]];
+                this.top5[8] = ["supermercado",this.countsOfCategories[8]];
+                this.top5[9] = ["roupas",this.countsOfCategories[9]];
+                this.top5[10] = ["outro",this.countsOfCategories[10]];
+
+                this.$store.dispatch("fillTop5", this.top5)
+                this.$store.dispatch("fillTransactionsArrays", this.countsOfCategories)
+                this.$router.push({name:'dashboard'})
+
             }
         }
     }

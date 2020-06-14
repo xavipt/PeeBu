@@ -2,20 +2,17 @@ require('./bootstrap');
 
 import store from './vuex/store.js';
 import VueRouter from 'vue-router';
-import router from './router';
+import router from './router/index';
 import Root from './components/Root';
 import Notifications from 'vue-notification';
 import Vuetify from 'vuetify'
-<<<<<<< HEAD
-=======
-
->>>>>>> 97cf0a732ec8835481946ba00d9ab86a8de9dac6
-
+import VueGraph from 'vue-graph'
 
 window.Vue = require('vue');
 Vue.use(VueRouter);
 Vue.use(Notifications);
 Vue.use(Vuetify);
+Vue.use(VueGraph)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('nav-bar', require('./components/nav').default)
@@ -28,8 +25,8 @@ const app = new Vue({
     router,
     el: '#app',
     vuetify: new Vuetify(),
-<<<<<<< HEAD
+
 });
-=======
-});
->>>>>>> 97cf0a732ec8835481946ba00d9ab86a8de9dac6
+
+
+
