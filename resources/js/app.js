@@ -8,6 +8,7 @@ import Notifications from 'vue-notification';
 import Vuetify from 'vuetify'
 import VueGraph from 'vue-graph'
 
+
 window.Vue = require('vue');
 Vue.use(VueRouter);
 Vue.use(Notifications);
@@ -27,6 +28,3 @@ const app = new Vue({
     vuetify: new Vuetify(),
 
 });
-
-
-
