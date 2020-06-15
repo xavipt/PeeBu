@@ -10,6 +10,21 @@ export default new Vuex.Store({
     state:{
         transactions:[],
         notclassifiedTransactions:'',
+        countsOfCategories:[0,0,0,0,0,0,0,0,0,0,0],
+        top5:[],
+        categories: [
+            "cabeleireiro",
+            "restauracao",
+            "saude",
+            "entretenimento",
+            "escola",
+            "casa",
+            "animais",
+            "mecanica",
+            "supermercado",
+            "roupas",
+            "outro"
+        ],
     },
     getters:{
         transactions: state =>{
@@ -17,7 +32,17 @@ export default new Vuex.Store({
         },
         c: state =>{
             return state.notclassifiedTransactions;
-        }
+        },
+        categories: state=>{
+            return state.categories;
+        },
+        countsOfCategories: state=>{
+            return state.countsOfCategories;
+        },
+        top5: state=>{
+          return state.top5;
+        },
+
     },
     mutations:{
         loadTransactions(state) {
@@ -32,11 +57,27 @@ export default new Vuex.Store({
                     }
                     state.notclassifiedTransactions = transactions.length;
                 })
+        },
+        fillTransactionsArrays(state,countsOfCategories){
+            for(var i = 0; i < countsOfCategories.length; i++){
+                state.countsOfCategories[i] = [countsOfCategories[i]];
+            }
+        },
+        fillTop5(state,top5){
+            state.top5 = top5.sort(function(a, b){return b[1]-a[1]});
+            state.top5 = state.top5.slice(0, 5);
+            console.log(state.top5)
         }
     },
     actions:{
         loadTransactions(context){
             context.commit('loadTransactions')
-        }
+        },
+        fillTransactionsArrays(context,countsOfCategories){
+            context.commit('fillTransactionsArrays',countsOfCategories)
+        },
+        fillTop5(context,top5){
+            context.commit('fillTop5',top5)
+        },
     },
 })
